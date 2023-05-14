@@ -1,5 +1,5 @@
 async function getAllArticles() {
-    var url = "http://localhost:3000/articles"
+    var url = "http://13.53.206.90:3000/articles/"
     var response = await fetch(url, {headers: {"Accept": "application/json"} })
     var data = await response.json()
     var div = ""
@@ -10,7 +10,7 @@ async function getAllArticles() {
         var published = data[i]["published"]
         var body = data[i]["body"]
         var articleID = data[i]["id"]
-        div += "<h2>" + title + "</h2>" + "<h4>Published: " + published + "</h4>" +  "<p>" + body + "</p>" + "</br><button onclick=" + "deleteArticle(" + articleID + ")" + ">Delete article</button><button onclick=" + "editArticle(" + articleID + ")>Edit article</button></br></br>"
+        div += "<h2>" + title + "</h2>" + "<h4>Published: " + published + "</h4>" +  "<p>" + body + "</p>" + "</br><button onclick=" + "deleteArticle(" + articleID + ")" + ">Delete article</button> </br></br>"
     }
 
 document.getElementById("articles").innerHTML = div 
@@ -19,7 +19,7 @@ document.getElementById("articles").innerHTML = div
 
 async function getArticleByID() {
     var articleID = document.getElementById("articleID").value
-    var url = "http://localhost:3000/articles/" + articleID
+    var url = "http://13.53.206.90:3000/articles/" + articleID
     var response = await fetch(url, {headers: {"Accept": "application/json"} })
     
     try {
@@ -38,7 +38,7 @@ async function getArticleByID() {
 }
 
 async function createArticle() {
-    var url = "http://localhost:3000/articles/"
+    var url = "http://13.53.206.90:3000/articles"
     var newArticleTitle = document.getElementById("newArticleTitle").value
     var newArticleBody = document.getElementById("newArticleBody").value
     var newArticleCheckbox = document.getElementById("newArticlePublished")
@@ -75,7 +75,7 @@ document.getElementById("articles").innerHTML = "New article created. Check the 
 
 async function deleteArticle(idFromArticle) {
     var idToDelete = idFromArticle
-    var url = "http://localhost:3000/articles/" + idToDelete
+    var url = "http://13.53.206.90:3000/articles/" + idToDelete
 
     
     var response = await fetch(url, {
@@ -102,8 +102,8 @@ async function editArticle() {
         var editArticlePublished = false
     }
 
-    var url = "http://localhost:3000/articles/" + idToEdit
-    
+    var url = "http://13.53.206.90:3000/articles/" + idToEdit
+
     try {
         var data = {
             title: editArticleTitle,
